@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var Temp = {
+				//温度存储
+				monthTempStore:[],
+				//周温度存储
+				weekTempStore:[],
+				add:function(by,key,temp){
+					var strategy = {
+						month:function(month){
+							Temp.monthTempStore[month] = Temp.monthTempStore[month]||new Array();
+							Temp.monthTempStore[month].push(temp);
+						},
+						week:function(week){
+							Temp.weekTempStore[week] = Temp.weekTempStore[week]||new Array();
+							Temp.weekTempStore[week].push(temp);
+						},
+					};
+					strategy[by](key);
+				},
+				average:function(by,key){
+					var sum = 0;
+					var i = 0;
+					var strategy = {
+						month:function(){
+							for(;i < Temp.monthTempStore[key].length; i++){
+								sum += Temp.monthTempStore[key][i]
+							}
+							return sum / i;
+						},
+						week:function(){
+							for(;i<Temp.weekTempStore[key].length;i++){
+								sum += Temp.weekTempStore[key][i]
+							}
+							return sum / i
+						},
+						allweek:function(){
+							var index = 0;
+							for(;i<Temp.weekTempStore.length;i++){
+								if(Temp.weekTempStore[i]){
+									for(var j=0;j<Temp.weekTempStore[i].length;j++){
+										sum += Temp.weekTempStore[i][j];
+										++index;
+									}
+								}
+							}
+							return sum / index;
+						},
+					}
+					return strategy[by]();  
+				},
+			}
+			
+		//test
+		//存储每个月有用数据  
+		Temp.add('month',1,20);  
+		Temp.add('month',1,30);  
+		Temp.add('month',1,30);  
+		//1月份平均温度 => 月平均数  
+		console.log(Temp.average('month',1));  
+		Temp.add('week',1,30);  
+		Temp.add('week',1,40);  
+		Temp.add('week',2,40);  
+		//第1周温度平均数 => 某一周平均数  
+		console.log(Temp.average('week',1));  
+		//所有周平均数  
+		console.log(Temp.average('allweek'));  
+		</script>
+	</body>
+</html>

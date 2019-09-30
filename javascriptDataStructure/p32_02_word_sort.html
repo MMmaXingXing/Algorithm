@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>单词排序</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function WordSort(){
+				this.word = [];
+				this.add = add;
+				this.positive = positive;
+				this.reverse = reverse;
+			}
+			function add (w){
+				return this.word.push(w);
+			}
+			function positive (){
+				return this.word.sort();
+			}
+			function reverse (){
+				return this.word.reverse();
+			}
+			//test
+			var wordSort = new WordSort();
+			wordSort.add("a");
+			wordSort.add("b");
+			wordSort.add("c");
+			wordSort.add("d");
+			console.log(wordSort.positive());
+			console.log(wordSort.reverse());
+			
+			
+			//另一种
+			//单词排序 正序  或 倒序  
+			var SortWord = function () {  
+			    var _this = this;  
+			  
+			    _this.wordStore = ['zhang','apple','panel','pen','dong','qing'];  
+			  
+			    var strategy = {  
+			        //正序  
+			        asc:function () {  
+			            _this.wordStore.sort();  
+			        },  
+			        //倒序  
+			        desc:function () {  
+			            _this.wordStore.sort(function (a,b) {  
+			                return b > a;  
+			            });  
+			        }  
+			    };  
+			  
+			    _this.sort = function (rule) {  
+			        strategy[rule]();  
+			        return _this.wordStore;  
+			    }  
+			}  
+			console.log(new SortWord().sort('asc')); 
+		</script>
+	</body>
+</html>

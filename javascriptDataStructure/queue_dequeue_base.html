@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>创建一个双向队列基类</p>
+		<p>修改Queue类，行程一个Deque类。这是一个和队列类似的数据结构，允许从队列两端添加和删除元素，因此也叫双向队列。写一段测试程序测试该类</p>
+		<script src="queue_base.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//双向队列
+			function Deque(){};
+			//继承队列
+			Deque.prototype = new Queue();
+			//重写队列dequeue方法
+			Deque.prototype.dequeue = function(direction){
+				var _this = this;
+				var strategy = {
+					'l':function(){
+						return _this.dataStore.shift();
+					},
+					'r':function(){
+						return _this.dataStore.pop();
+					}
+				}
+				return strategy[direction]();
+			}
+			//重写队列enqueue方法
+			Deque.prototype.enqueue = function(direction,element){
+				var _this = this;
+				var strategy = {
+					'l':function(){
+						_this.dataStore.unshift(element);
+					},
+					'r':function(){
+						_this.dataStore.push(element);
+					}
+				}
+				return strategy[direction]();
+			}
+			
+			var d = new Deque();
+			//两端添加测试
+			d.enqueue('r','right');
+			d.enqueue('r','right2');
+			d.enqueue('r','right3');
+			d.enqueue('l','left');
+			console.log(d.dataStore);
+			//两端删除测试
+			d.dequeue('l');
+			d.dequeue('r');
+			console.log(d.dataStore);
+		</script>
+	</body>
+</html>

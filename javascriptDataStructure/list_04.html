@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>list_04</title>
+	</head>
+	<body>
+		<p>修改本章的影碟租赁程序，当一部影片检出后，将其加入一个已租赁影片列表。每当有客户检出一部影片，都显示该列表中的内容。</p>
+		<br/>
+		<p>为影碟租赁程序创建一个check-in()函数，当客户归还一部影片时，将该影片从已租列表中删除，同时添加到现有影片列表中。</p>
+		<script src="list_base.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var Movies = {
+				//已租列表
+				rentedList:new List(),
+				//现有列表
+				list:new List(),
+				init:function(){
+					this.list.dataStore = [
+						'《白雪公主》',
+						'《七个小矮人》',
+						'《一千零一夜》',
+						'《火星救援》',
+					];
+					console.log(this.list);
+					console.log(this.list.dataStore);
+				},
+				checkOut:function(name){
+					var _this = this;
+					if(_this.list.remove(name)){
+						_this.rentedList.append(name);
+						console.log(_this.list.dataStore);
+					}
+				}
+			}
+			
+			Movies.init();
+			//list类有一个更新的问题。
+			Movies.list.updateLength();
+			Movies.checkOut('《白雪公主》');
+			//已租列表
+			console.log(Movies.rentedList.dataStore);
+			
+			Movies.checkIn = function(name){
+				if(this.rentedList.remove(name)){
+					this.list.append(name);
+					console.log(this.list.dataStore);
+				}
+			}
+			
+			Movies.checkIn('《白雪公主》');
+			//已租列表
+			console.log(Movies.rentedList.dataStore);
+		</script>
+	</body>
+</html>

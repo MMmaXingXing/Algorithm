@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>创建Person类，该类用于保存人的姓名和性别信息。创建一个至少包含10个Person对象的列表。写一个函数显示列表中所有拥有相同性别的人。</p>
+		<script src="list_base.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var Person = function( name, gender ){
+				this.name = name;
+				this.gender = gender;
+			}
+			
+			List.prototype.getSameGender = function(){
+				var gender = {
+					man:[],
+					woman:[],
+				};
+				var strategy = {
+					'男':function(name){
+						gender.man.push(name);
+					},
+					'女':function(name){
+						gender.woman.push(name);
+					}
+				};
+				for(var i=0;i<this.dataStore.length;i++){
+					var item = this.dataStore[i];
+					strategy[item['gender']](item['name']);
+				}
+				return gender;
+			}
+			
+			
+			//test
+			var list = new List();
+			list.append(new Person('toney','男'));
+			list.append(new Person('toney1','男'));
+			list.append(new Person('toney2','男'));
+			list.append(new Person('toney3','男'));
+			list.append(new Person('toney4','男'));
+			list.append(new Person('hanmeimie','女'));
+			list.append(new Person('hanmeimie1','女'));
+			list.append(new Person('hanmeimie2','女'));
+			list.append(new Person('hanmeimie3','女'));
+			list.append(new Person('hanmeimie4','女'));
+			list.append(new Person('hanmeimie6','女'));
+			list.append(new Person('hanmeimie5','女'));
+			
+			console.log(list.getSameGender())
+		</script>
+	</body>
+</html>

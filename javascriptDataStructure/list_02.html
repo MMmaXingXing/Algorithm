@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>list02</title>
+	</head>
+	<body>
+		<p>
+			增加一个向列表中插入元素的方法，改方法只在待插元素小于列表中的所有元素时才执行插入操作。
+		</p>
+		<script src="list_base.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			List.prototype.insertmin = function(element){
+				var dataStore = this.dataStore;
+				dataStore = dataStore.sort();
+				var min = ((typeof dataStore[0]=='number')?dataStore[0]:dataStore[dataStore.length - 1])
+				if(element < min){
+					this.insert(element,min);
+				}
+				return false;
+			}
+			
+			//test 
+			
+			var list = new List();
+			list.append(2);
+			list.append(2);
+			list.append(3);
+			list.append(4);
+			list.insertmin(0)
+			console.log(list.toString());
+		</script>
+	</body>
+</html>

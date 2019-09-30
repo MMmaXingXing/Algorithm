@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			Array.matrix = function(numrows,numcols,initial){
+				var arr = [];
+				for(var i=0;i<numrows;++i){
+					var columns = [];
+					for(var j=0;j<numcols;++j){
+						columns[j] = initial;
+					}
+					arr[i] = columns;
+				}
+				return arr;
+			}
+			//test
+			var nums = Array.matrix(5,5,0)
+			console.log(nums[1][1])//0
+			
+		</script>
+	</body>
+</html>

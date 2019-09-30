@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>p32记录学生成绩，添加，平均值</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function Grade (){
+				this.grade = [];
+				this.add = add;
+				this.average = average;
+			}
+			function add (num){
+				this.grade.push(num);
+			}
+			function average (){
+				var total = 0;
+				for(var i=0;i<this.grade.length;++i){
+					total += this.grade[i]
+				}
+				return total / this.grade.length;
+			}
+			//test
+			var gradeClass = new Grade();
+			this.gradeClass.add(52);
+			this.gradeClass.add(55);
+			this.gradeClass.add(53);
+			console.log(gradeClass.average());
+			
+			
+			// Internet 
+			
+			
+			//ps创建一个记录学生成绩对象
+			var studentGrade={
+				grade : [],
+				add:function(num){
+					return this.grade.push(num); 
+				},
+				average:function(){
+					var total = 0;
+					for(var i=0;i<this.grade.length;++i){
+						total += this.grade[i]
+					}
+					return total / this.grade.length;
+				}
+			}
+		</script>
+	</body>
+</html>

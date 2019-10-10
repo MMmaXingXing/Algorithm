@@ -7,8 +7,63 @@ function Linked() {
     var length = 0;
     var head = null;
 }
-Class Linked {
-    Node (val) {
-        this.val = val;
+
+let LinkedList = (function() {
+    class Node {
+        constructor(element) {
+            this.element = element;
+            this.next = null;
+        }
     }
-}
+
+    const length = new WeakMap();
+    const head = new WeakMap();
+
+    class Linked {
+        constructor() {
+            
+        }
+
+        append(element) {
+
+        }
+
+        insert(element, position) {
+
+        }
+
+        removeAt() {
+
+        }
+
+        remove() {
+
+        }
+
+        indexOf() {
+
+        }
+
+        isEmpty() {
+
+        }
+
+        size() {
+
+        }
+
+        getHead() {
+
+        }
+
+        toString() {
+
+        }
+
+        print() {
+
+        }
+
+    }
+    return Linked;
+})()

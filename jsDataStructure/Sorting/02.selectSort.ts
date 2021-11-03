@@ -19,3 +19,12 @@ const selectSort = (arr: number[]) => {
 };
 
 console.log(selectSort([5, 4, 9, 5, 4, 6, 3, 2, 1, 2]));
+
+interface animal {
+  name: string;
+}
+
+interface miao extends animal {
+  name: string;
+  type: string;
+}

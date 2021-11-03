@@ -74,3 +74,8 @@ nodeList.insert(5, 4);
 nodeList.remove(5);
 nodeList.insert(6, 3);
 nodeList.print();
+
+
+const arr:number[] = [];
+
+const arr1:Array<number> = number[]

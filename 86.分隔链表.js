@@ -18,26 +18,28 @@
  * @return {ListNode}
  */
 var partition = function (head, x) {
-  let smallHead = new ListNode(0, null);
-  let bigHead = new ListNode(0, null);
-  let smallTail = smallHead;
-  let bigTail = bigHead;
-  let p = head;
-  let q;
-  while (p) {
-    q = p.next;
-    if (p.val < x) {
-      p.next = smallTail.next;
-      smallTail.next = p;
-      smallTail = p;
-    } else {
-      p.next = bigTail.next;
-      bigTail.next = p;
-      bigTail = p;
+    let smallHead = new ListNode(0);
+    let bigHead = new ListNode(0);
+    let smallTail = smallHead;
+    let bigTail = bigHead;
+    let cycleNext = head;
+    let copyHead;
+
+    while (cycleNext) {
+        copyHead = cycleNext.next;
+        if (cycleNext.val < x) {
+            cycleNext.next = smallTail.next;
+            smallTail.next = cycleNext;
+            smallTail = cycleNext;
+        } else {
+            cycleNext.next = bigTail.next;
+            bigTail.next = cycleNext;
+            bigTail = cycleNext;
+        }
+        cycleNext = copyHead;
     }
-    p = q;
-  }
-  smallTail.next = bigHead.next;
-  return smallHead.next;
+
+    smallTail.next = bigHead.next;
+    return smallHead.next;
 };
 // @lc code=end

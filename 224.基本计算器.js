@@ -10,32 +10,37 @@
  * @return {number}
  */
 var calculate = function (s) {
-    let str = s.replace(/\s*/g, "");
-    const stack = [0];
-    for (let i = 0; i < str.length; i++) {
-        if (i === 0) {
-            if (str[i] === "-") {
-                stack.push(`${str[i]}${str[i + 1]}`);
-            } else {
-                stack.push(str[i]);
+    let str = s.replace(/[\s()]*/g, "");
+    const len = str.length;
+    const stack = [1];
+    let sign = 1;
+    let i = 0;
+    let result = 0;
+
+    while (i < len) {
+        if (str[i] === "+") {
+            sign = stack[stack.length - 1];
+            i++;
+        } else if (str[i] === "-") {
+            sign = -stack[stack.length - 1];
+            i++;
+        } else if (str[i] === "(") {
+            stack.push(sign);
+            i++;
+        } else if (str[i] === ")") {
+            stack.pop();
+            i++;
+        } else {
+            console.log(stack);
+            let num = 0;
+            while (i < len && !isNaN(Number(str[i]))) {
+                num = num * 10 + Number(str[i]);
+                i++;
             }
-        }
-        switch (str[i]) {
-            case "+":
-                stack.push(str[i + 1]);
-                break;
-            case "-":
-                stack.push(-str[i + 1]);
-                break;
-            case "*":
-                stack.push(stack.pop() * str[i + 1]);
-                break;
-            case "/":
-                stack.push(parseInt(stack.pop() / str[i + 1], 10));
-                break;
+            result += sign * num;
         }
     }
-    const result = stack.reduce((prev, next) => prev * 1 + next * 1);
+
     return result;
 };
 // @lc code=end

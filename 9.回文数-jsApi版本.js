@@ -11,9 +11,10 @@
  */
 var isPalindrome = function (x) {
   if (x < 0) return false;
-  const str = x.toString();
-  const list = str.split("");
-  if (str === list.reverse().join("")) return true;
+  const str = `${x}`;
+  const strList = str.split("");
+  const revertStr = strList.reverse().join("");
+  if (str === revertStr) return true;
   return false;
 };
 // @lc code=end

@@ -33,6 +33,7 @@ var isValid = function (s) {
                 break;
         }
     }
+
     return stack.length === 0;
 };
 // @lc code=end

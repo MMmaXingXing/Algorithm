@@ -11,28 +11,25 @@
  * @return {boolean}
  */
 var backspaceCompare = function (s, t) {
-  let stackS = [];
-  let stackT = [];
+    const stackS = [];
+    const stackT = [];
 
-  for (let i = 0; i < s.length; i++) {
-    if (s[i] === "#" && stackS.length > 0) {
-      stackS.pop();
+    for (let i = 0; i < s.length; i++) {
+        if (stackS.length > 0 && s[i] === "#") {
+            stackS.pop();
+        } else if (s[i] !== "#") {
+            stackS.push(s[i]);
+        }
     }
-    if (s[i] !== "#") {
-      stackS.push(s[i]);
-    }
-  }
 
-  for (let i = 0; i < t.length; i++) {
-    if (t[i] === "#" && stackT.length > 0) {
-      stackT.pop();
+    for (let i = 0; i < t.length; i++) {
+        if (stackT.length > 0 && t[i] === "#") {
+            stackT.pop();
+        } else if (t[i] !== "#") {
+            stackT.push(t[i]);
+        }
     }
-    if (t[i] !== "#") {
-      stackT.push(t[i]);
-    }
-  }
 
-  if (stackS.join("") === stackT.join("")) return true;
-  return false;
+    return stackS.join("") === stackT.join("");
 };
 // @lc code=end

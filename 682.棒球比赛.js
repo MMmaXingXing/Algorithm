@@ -14,23 +14,22 @@ var calPoints = function (ops) {
     for (let i = 0; i < ops.length; i++) {
         const len = stack.length;
         switch (ops[i]) {
-            case "C":
-                stack.pop();
+            case "+":
+                const num = Number(stack[len - 1]) + Number(stack[len - 2]);
+                stack.push(num);
                 break;
             case "D":
                 stack.push(stack[len - 1] * 2);
                 break;
-            case "+":
-                const num = stack[len - 1] + stack[len - 2];
-                stack.push(num);
+            case "C":
+                stack.pop();
                 break;
             default:
-                stack.push(Number(ops[i], 10));
+                stack.push(Number(ops[i]));
                 break;
         }
     }
-    return stack.reduce((total, next) => {
-        return total + next;
-    });
+
+    return stack.reduce((total, next) => total + next, 0);
 };
 // @lc code=end

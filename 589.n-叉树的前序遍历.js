@@ -14,7 +14,7 @@
  */
 
 var __preOrder = (root, ans) => {
-  if (!root.val) return;
+  if (!root) return;
   ans.push(root.val);
   for (let i = 0; i < root.children.length; i++) {
     if (root.children[i]) {

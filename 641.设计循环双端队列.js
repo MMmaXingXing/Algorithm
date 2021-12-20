@@ -47,7 +47,7 @@ MyCircularDeque.prototype.insertLast = function (value) {
  */
 MyCircularDeque.prototype.deleteFront = function () {
     if (this.isEmpty()) return false;
-    this.list.splice(this.head, 1);
+    // this.list.splice(this.head, 1);
     this.head = (this.head + 1) % this.max;
     this.count -= 1;
     return true;
@@ -58,7 +58,7 @@ MyCircularDeque.prototype.deleteFront = function () {
  */
 MyCircularDeque.prototype.deleteLast = function () {
     if (this.isEmpty()) return false;
-    this.list.splice(this.tail - 1, 1);
+    // this.list.splice(this.tail - 1, 1);
     this.tail = (this.tail - 1 + this.max) % this.max;
     this.count -= 1;
     return true;

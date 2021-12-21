@@ -11,11 +11,9 @@
  * @return {number}
  */
 var search = function (nums, target) {
-    let cnt = 0;
-    if (!nums.includes(target)) return -1;
-    nums.forEach((item, index) => {
-        if (item === target) cnt = index;
-    });
-    return cnt;
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] === target) return i;
+    }
+    return -1;
 };
 // @lc code=end

@@ -18,8 +18,8 @@ class TreeNode {
   insert_pre = (n) => {
     n.pre = this.pre;
     n.next = this;
-    if (this.next) {
-      this.next = n;
+    if (this.pre) {
+      this.pre.next = n;
     }
   };
 

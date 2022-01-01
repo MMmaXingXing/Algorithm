@@ -22,8 +22,7 @@ var MyCircularDeque = function (k) {
  */
 MyCircularDeque.prototype.insertFront = function (value) {
     if (this.isFull()) return false;
-    this.head = this.head - 1;
-    if (this.head == -1) this.head = this.max - 1;
+    this.head = (this.head - 1 + this.max) % this.max;
     this.list[this.head] = value;
     this.count += 1;
     return true;

@@ -13,6 +13,7 @@ class Heap {
 
   // 从堆中弹出元素 根节点与最后一个节点互换
   pop = () => {
+    //这里可以交换堆顶元素与最后一个元素
     if (this.size() === 0) return;
     this.data[0] = this.data[this.count - 1];
     this.count -= 1;

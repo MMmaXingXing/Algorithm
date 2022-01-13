@@ -14,19 +14,19 @@
  * }
  */
 const getHeight = (root) => {
-    if (!root) return 0;
-    const l = getHeight(root.left);
-    const r = getHeight(root.right);
-    if (l < 0 || r < 0) return -2;
-    if (Math.abs(l - r) > 1) return -2;
+  if (!root) return 0;
+  const l = getHeight(root.left);
+  const r = getHeight(root.right);
+  if (l < 0 || r < 0) return -2;
+  if (Math.abs(l - r) > 1) return -2;
 
-    return Math.max(l, r) + 1;
+  return Math.max(l, r) + 1;
 };
 /**
  * @param {TreeNode} root
  * @return {boolean}
  */
 var isBalanced = function (root) {
-    return getHeight(root) >= 0;
+  return getHeight(root) >= 0;
 };
 // @lc code=end

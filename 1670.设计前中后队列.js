@@ -211,3 +211,12 @@ class FrontMiddleBackQueue {
  * var param_6 = obj.popBack()
  */
 // @lc code=end
+
+
+Object.keys(a).length === 0
+JSON.stringify(a) === "{}"
+Object.getOwnPropertyNames(a).length === 0
+Reflect.ownKeys(a).length // 获取到所有的键名，为空则返回true
+
+键名中有Symbol类型的话，只能用
+Reflect.ownKeys(a).length
